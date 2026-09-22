@@ -1,0 +1,43 @@
+model:
+  base_model_id: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+  adapter_dir: "./artifacts/adapter"
+  merged_dir: "./artifacts/merged"
+  max_seq_length: 512
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: "none"
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]
+
+data:
+  dataset_id: "b-mc2/sql-create-context"
+  train_size: 3000
+  test_split: 0.05
+  seed: 42
+  system_prompt: >
+    You are a SQL assistant. Given a table schema and a question,
+    reply with ONLY the SQL query, nothing else.
+
+train:
+  output_dir: "./tinyllama-sql-lora"
+  num_train_epochs: 1
+  per_device_train_batch_size: 2
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0002
+  lr_scheduler_type: "cosine"
+  warmup_steps: 10
+  logging_steps: 10
+  eval_steps: 50
+  fp16: true
+  bf16: false
+  report_to: "none"   # set to "wandb" for experiment tracking
+  seed: 42
+
+serve:
+  host: "0.0.0.0"
+  port: 8000
+  max_new_tokens: 128
+  use_merged_weights: true

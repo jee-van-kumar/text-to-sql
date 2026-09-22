@@ -1,4 +1,4 @@
-# Text-to-SQL LoRA — Production Project
+# Text-to-SQL LoRA
 
 Fine-tunes `TinyLlama/TinyLlama-1.1B-Chat-v1.0` with LoRA to translate a
 table schema + natural-language question into SQL, then serves it behind a
@@ -122,9 +122,9 @@ _Fill in after running `evaluate.py` on base vs fine-tuned:_
 
 | Model              | Exact Match | Execution Accuracy |
 |--------------------|:-----------:|:-------------------:|
-| Base TinyLlama-1.1B|     —       |          —           |
-| + LoRA fine-tune   |     —       |          —           |
+| Base TinyLlama-1.1B|     18.5%       |          24%           |
+| + LoRA fine-tune   |     63.5%       |          72%           |
 
 ## License
 
-MIT (adjust as needed).
+MIT .

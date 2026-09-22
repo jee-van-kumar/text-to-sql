@@ -1,0 +1,17 @@
+services:
+  sql-lora-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+    environment:
+      - MODEL_ARTIFACTS_DIR=/app/artifacts
+    # Uncomment to use a GPU with the NVIDIA Container Toolkit installed:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]

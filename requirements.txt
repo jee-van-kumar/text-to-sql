@@ -1,0 +1,19 @@
+transformers==5.0.0
+peft==0.18.1
+accelerate==1.13.0
+datasets==4.8.4
+trl==1.1.0
+sentencepiece==0.2.1
+protobuf==5.29.6
+torch>=2.2.0
+pyyaml>=6.0
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+pydantic>=2.6.0
+
+# dev / test
+pytest>=8.0.0
+ruff>=0.4.0
+
+# optional: uncomment to enable experiment tracking (set train.report_to: "wandb")
+# wandb>=0.17.0
